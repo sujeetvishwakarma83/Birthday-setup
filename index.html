@@ -13,19 +13,22 @@
       justify-content: center;
       align-items: center;
     }
+
     h2 {
       text-align: center;
       font-size: 1.5rem;
     }
+
     .main {
       padding: 10px;
       margin-top: 150px;
       width: 90%;
       max-width: 400px;
-       background: rgba(255, 255, 255, 0.363); 
+      background: rgba(255, 255, 255, 0.363); 
       border-radius: 8px;
       transition: background-color 1.5s ease;
     }
+
     @media (max-width:500px) {
       .main {
         margin-top: 50px;
@@ -34,69 +37,73 @@
         font-size: 1.2rem;
       }
     }
+
     .main:hover {
-      background-color: rgba(255, 255, 255, 0.5);
-      color: white;
+      background-color: rgba(129, 223, 129, 0.4);
+      color: black;
     }
-    
+
     input {
       width: 95%;
-      border:none;
-      border-radius: 5px;
-      cursor: text;
-
-    }
-    button {
-      width: 100%;
       border: none;
       border-radius: 5px;
-      margin-bottom: 20px;
-      cursor: pointer;
-
-    }
-    button:hover {
-      background: green;
-      color: bisque;
-    }
-    input, button {
+      cursor: text;
       padding: 10px;
       font-size: 16px;
       margin: 10px 0;
-      
     }
+
+    button {
+      display: block;
+      margin: 10px auto 20px auto; /* Center the button */
+      width: 40%;
+      border: none;
+      border-radius: 5px;
+      background: hsla(120, 35%, 39%, 0.268);
+      cursor: pointer;
+      transition: background-color 1.5s ease;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bolder;
+    }
+
+    button:hover {
+      background: hsla(120, 39%, 48%, 0.75);
+      color: bisque;
+    }
+
     .message {
       font-size: 18px;
       margin-top: 20px;
-      color:green;
+      color: green;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="main">
-  <h2>🎂 Set Your Birthday</h2>
-  <label for="bday">Enter your birthday:</label>
-  <input type="date" id="bday"><br>
-  <button onclick="setBirthday()">Set Birthday</button>
-
-  <div class="message" id="output"></div>
+    <h2>🎂 Set Your Birthday</h2>
+    <label for="bday">Enter your birthday:</label>
+    <input type="date" id="bday"><br>
+    <button onclick="setBirthday()">Set Birthday</button>
+    <div class="message" id="output"></div>
   </div>
+
   <script>
     function setBirthday() {
-  let input = document.getElementById("bday").value;
+      let input = document.getElementById("bday").value;
 
-  if (!input) {
-    document.getElementById("output").innerText = "Please enter a date.";
-    return;
-  }
+      if (!input) {
+        document.getElementById("output").innerText = "Please enter a date.";
+        return;
+      }
 
-  // Directly use birthday date
-  let bday = new Date(input + "T00:00:00");  // fix timezone issue
+      let bday = new Date(input + "T00:00:00"); // fix timezone issue
+      let options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-  let options = { year: 'numeric', month: 'long', day: 'numeric' };
-  document.getElementById("output").innerText =
-    `🎉 Your birthday is set to: ${bday.toLocaleDateString('en-US', options)} 🎂`;
-}
-
+      document.getElementById("output").innerText =
+        `🎉 Your birthday is set to: ${bday.toLocaleDateString('en-US', options)} 🎂`;
+    }
   </script>
 </body>
 </html>
