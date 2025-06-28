@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>costom birthday message</title>
+  <style>
+    body {
+      padding: 20px;
+      background-color: rgb(206, 219, 230);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .main {
+      padding: 10px;
+      margin-top: 150px;
+      width: 90%;
+      max-width: 400px;
+       background: rgba(255, 255, 255, 0.363); 
+      border-radius: 8px;
+      transition: background-color 1.5s ease;
+    }
+    @media (max-width:500px) {
+      .main {
+        margin-top: 50px;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+    .main:hover {
+      background-color: red;
+      color: white;
+    }
+    
+    input {
+      width: 95%;
+      border:none;
+      border-radius: 5px;
+      cursor: text;
+
+    }
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+
+    }
+    button:hover {
+      background: green;
+      color: bisque;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      
+    }
+    .message {
+      font-size: 18px;
+      margin-top: 20px;
+      color:green;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+  <h2>🎂 Set Your Birthday</h2>
+  <label for="bday">Enter your birthday:</label>
+  <input type="date" id="bday"><br>
+  <button onclick="setBirthday()">Set Birthday</button>
+
+  <div class="message" id="output"></div>
+  </div>
+  <script>
+    function setBirthday() {
+  let input = document.getElementById("bday").value;
+
+  if (!input) {
+    document.getElementById("output").innerText = "Please enter a date.";
+    return;
+  }
+
+  // Directly use birthday date
+  let bday = new Date(input + "T00:00:00");  // fix timezone issue
+
+  let options = { year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById("output").innerText =
+    `🎉 Your birthday is set to: ${bday.toLocaleDateString('en-US', options)} 🎂`;
+}
+
+  </script>
+</body>
+</html>
